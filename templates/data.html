@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+ <!-- <img src="/static/img/cerebrocarelogo.png" class="img-fluid"alt="brainlogo"> -->
+    <title>CEREBROCARE</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="{{ url_for('static', filename='vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="{{ url_for('static', filename='css/sb-admin-2.min.css')}}" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon">
+                    <img src="/static/img/cerebrocarelogo.png" class="img-fluid"alt="brainlogo">
+                </div>
+                <div class="sidebar-brand-text"><span class="color: #003366">CEREBRO</span>CARE</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span></a>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Prediction                  
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/form" data-toggle="collapse" data-target="#collapseTwo"
+                    aria-expanded="true" aria-controls="collapseTwo">
+                    <i class="fas fa-fw fa-pen-fancy"></i>
+                    <span>Prediction Test</span>
+                </a>
+            </li>
+
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                About Data
+            </div>
+
+            <!-- Nav Item - Data -->
+            <li class="nav-item active">
+                <a class="nav-link" href="/data">
+                    <i class="fas fa-fw fa-table"></i>
+                <span>Data</span></a>
+        </li>
+        <!-- Nav Item - Utilities Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="/smote" >
+                <i class="fas fa-fw fa-newspaper"></i>
+                <span>SMOTE</span>
+        </a>
+        </li>
+            <!-- Nav Item - Charts -->
+            <li class="nav-item">
+                <a class="nav-link" href="/report">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Classification Report</span></a>
+                </li>
+                
+
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+        </ul>
+        <!-- End of Sidebar -->
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+                <!-- Topbar -->
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ml-auto">
+                        
+                        <!-- Nav Item - User Information -->
+                        <li class="nav-item dropdown no-arrow">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Maya Aulia</span>
+                            <img class="img-profile rounded-circle"
+                                    src="/static/img/undraw_profile.svg">
+                            </a>
+                            <!-- Dropdown - User Information -->
+                        </li>
+                        
+                    </ul>
+                    
+                </nav>
+                <!-- End of Topbar -->
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+
+                    <!-- Page Heading -->
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800 font-weight-bolder">Stroke Dataset</h1>
+                    </div>
+                    <!-- Content Row -->
+
+                    <main class="content">
+                        <div class="container-fluid p-0">
+                            <div class="card shadow">
+                                <div class="card-header d-flex flex-row align-items-center justify-content-between">
+                                    <h6 class="font-weight-bolder pt-2">Informasi data</h6>
+                                </div>
+                                <div>
+                                    <p class="px-4 pt-3 mb-0">Data yang kami digunakan yakni <a href="https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset">Stroke Dataset</a> kami peroleh dari tersebut dari Kaggle. Yang didalamnya memuat sebagai berikut:
+                                    </p>
+                                    <ul>
+                                        <li>Gender = jenis kelamin pasien
+                                        </li>
+                                        <li>Age = Usia pasien (tahun)
+                                        </li>
+                                        <li>Hypertension = Hipertensi (1 = hipertensi, 0 = tidak)
+                                        </li>
+                                        <li>Heart disease = Riwayat sakit jantung pasien (1 = sakit jantung, 0 = tidak)
+                                        </li>
+                                        <li>Ever married = Status pernikahan pasien</li>
+                                        <li>Work type = Jenis pekerjaan pasien</li>
+                                        <li>Residence type = Jenis tempat tinggal pasien</li>
+                                        <li>Avg glucose level = Kadar gula darah pasien</li>
+                                        <li>BMI = Indeks massa tubuh pasien</li>
+                                        <li>Smoke status = Riwayat merokok pasien</li>
+                                        <li>Stroke = Riwayat stroke pasien ( 1 = stroke, 0 = tidak)</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="card shadow mt-2">
+                                <div class="card-body">
+                                    <!-- Nav tabs -->
+                                    <ul class="nav nav-tabs sticky-tab" role="tablist">
+                                        <li class="nav-item">
+                                            <a class="nav-link active" id="dataset-asli-tab" data-toggle="tab" href="#dataset-asli" role="tab" onclick="showTab('dataset-asli')">Dataset Asli</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" id="dataset-transformasi-tab" data-toggle="tab" href="#dataset-transformasi" role="tab" onclick="showTab('dataset-transformasi')">Dataset Transformasi</a>
+                                        </li>
+                                    </ul>
+                                
+                                    <!-- Tab panes -->
+                                    <div class="tab-content">
+                                        <!-- Tab "Dataset Asli" -->
+                                        <div class="tab-pane active" id="dataset-asli" role="tabpanel">
+                                            <div class="table-responsive" style="overflow-y: auto;">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">No</th> 
+                                                            <th scope="col">Gender</th>
+                                                            <th scope="col">Age</th>
+                                                            <th scope="col" rowspan="2">Hyper-<br>tension</th>
+                                                            <th scope="col">Heart Disease</th>       
+                                                            <th scope="col">Ever Married</th>
+                                                            <th scope="col" rowspan="2">Work<br>Type</th>
+                                                            <th scope="col">Residence Type</th>  
+                                                            <th scope="col">Avg Glucose Level</th>
+                                                            <th scope="col">BMI</th>  
+                                                            <th scope="col">Smoking Status</th>
+                                                            <th scope="col">Stroke</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {% for index, row in df_stroke.iterrows() %}
+                                                        <tr>
+                                                            <th scope="row">{{ index + 1 }}</th>
+                                                            <td>{{ row['gender'] }}</td>    
+                                                            <td>{{ row['age'] }}</td>
+                                                            <td>{{ row['hypertension'] }}</td>
+                                                            <td>{{ row['heart_disease'] }}</td>
+                                                            <td>{{ row['ever_married'] }}</td>
+                                                            <td>{{ row['work_type'] }}</td>
+                                                            <td>{{ row['Residence_type'] }}</td>   
+                                                            <td>{{ row['avg_glucose_level'] }}</td>
+                                                            <td>{{ row['bmi'] }}</td>
+                                                            <td>{{ row['smoking_status'] }}</td>
+                                                            <td>{{ row['stroke'] }}</td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                                <!-- Pagination -->
+                                            <nav class="pt-2" aria-label="Page navigation">
+                                                <ul class="pagination">
+                                                    <!-- Tambahkan link untuk halaman-halaman selanjutnya di sini -->
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="/data?page=1#dataset-asli">1</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="/data?page=2#dataset-asli">2</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="/data?page=3#dataset-asli">3</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="/data?page=4#dataset-asli">4</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="/data?page=5#dataset-asli">5</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="/data?page=6#dataset-asli">6</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="/data?page=7#dataset-asli">7</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="/data?page=8#dataset-asli">8</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="/data?page=9#dataset-asli">9</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="/data?page=10#dataset-asli">10</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="/data?page=11#dataset-asli">11</a>
+                                                    </li>
+                                                    <!-- Dan seterusnya -->
+                                                </ul>
+                                            </nav>
+
+                                            </div>
+                                            <!-- Pagination -->
+                                            <nav class="pt-2" aria-label="Page navigation">
+                                                <!-- Pagination untuk dataset asli -->
+                                            </nav>
+                                        </div>
+                                
+                                        <!-- Tab "Dataset Transformasi" -->
+                                        <div class="tab-pane" id="dataset-transformasi" role="tabpanel">
+                                            <div class="table-responsive" style="overflow-y: auto;">
+                                                <table class="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th scope="col">No</th> 
+                                                            <th scope="col">Gender</th>
+                                                            <th scope="col">Age</th>
+                                                            <th scope="col" rowspan="2">Hyper-<br>tension</th>
+                                                            <th scope="col">Heart Disease</th>       
+                                                            <th scope="col">Ever Married</th>
+                                                            <th scope="col" rowspan="2">Work<br>Type</th>
+                                                            <th scope="col">Residence Type</th>  
+                                                            <th scope="col">Avg Glucose Level</th>
+                                                            <th scope="col">BMI</th>  
+                                                            <th scope="col">Smoking Status</th>
+                                                            <th scope="col">Stroke</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        {% for index, row in df_transformasi.iterrows() %}
+                                                        <tr>
+                                                            <th scope="row">{{ index + 1 }}</th>
+                                                            <td>{{ row['gender']|int }}</td>    
+                                                            <td>{{ row['age']|int }}</td>
+                                                            <td>{{ row['hypertension']|int }}</td>
+                                                            <td>{{ row['heart_disease']|int }}</td>
+                                                            <td>{{ row['ever_married']|int }}</td>
+                                                            <td>{{ row['work_type']|int }}</td>
+                                                            <td>{{ row['Residence_type']|int }}</td>   
+                                                            <td>{{ row['avg_glucose_level'] }}</td>
+                                                            <td>{{ row['bmi'] }}</td>
+                                                            <td>{{ row['smoking_status']|int }}</td>
+                                                            <td>{{ row['stroke']|int }}</td>
+                                                        </tr>
+                                                        {% endfor %}
+                                                    </tbody>
+                                                                                                    </table>
+
+                                            </div>
+                                            <!-- Pagination untuk dataset transformasi -->
+                                            <nav class="pt-2" aria-label="Page navigation">
+                                                <ul class="pagination">
+                                                    <!-- Tambahkan link untuk halaman-halaman selanjutnya di sini -->
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="/data?page=1#data-transformasi">1</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="/data?page=2#data-transformasi">2</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="/data?page=3#data-transformasi">3</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="/data?page=4#data-transformasi">4</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="/data?page=5#data-transformasi">5</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="/data?page=6#data-transformasi">6</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="/data?page=7#data-transformasi">7</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="/data?page=8#data_transformasi">8</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="/data?page=9#data_transformasi">9</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="/data?page=10#data_transformasi">10</a>
+                                                    </li>
+                                                    <li class="page-item">
+                                                        <a class="page-link" href="/data?page=11#data_transformasi">11</a>
+                                                    </li>
+                                                    <!-- Dan seterusnya -->
+                                                </ul>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <script>
+                                    function showTab(tabId) {
+                                        // Menyembunyikan semua tab
+                                        var tabs = document.querySelectorAll('.tab-pane');
+                                        tabs.forEach(function(tab) {
+                                            tab.classList.remove('active');
+                                        });
+                                
+                                        // Menampilkan tab yang dipilih
+                                        document.getElementById(tabId).classList.add('active');
+                                    }
+                                </script>
+                                
+                            </div>
+                        </div>
+                    </main>
+                    
+                    
+
+                </div>
+                <!-- /.container-fluid -->
+
+            </div>
+            <!-- End of Main Content -->
+
+            <!-- Footer -->
+            <footer class="sticky-footer bg-white">
+                <div class="container my-auto">
+                    <div class="copyright text-center my-auto">
+                        <span>Copyright &copy; CerebroCare 2024</span>
+                    </div>
+                </div>
+            </footer>
+            <!-- End of Footer -->
+
+        </div>
+        <!-- End of Content Wrapper -->
+
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+
+
+</body>
+
+</html>
