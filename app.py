@@ -72,14 +72,15 @@ def data():
     df_stroke_page = df_stroke.iloc[start_idx:end_idx]
     df_transformasi_page = df_transformasi.iloc[start_idx:end_idx]
 
-    # Menghitung jumlah total halaman untuk pagination data transformasi
-    total_rows_transformasi = len(df_transformasi)
-    total_pages_transformasi = ceil(total_rows_transformasi / data_per_page)
+    # Menghitung jumlah total halaman untuk pagination data
+    total_rows = len(df_stroke)
+    total_pages = ceil(total_rows / data_per_page)
+
+    # Menentukan teks "Showing 1 to 10 from seluruh data"
+    showing_text = f"Showing {start_idx + 1} to {min(end_idx, total_rows)} from {total_rows} rows"
 
     return render_template('data.html', df_stroke=df_stroke_page, df_transformasi=df_transformasi_page, 
-                           css_file='css/sb-admin-2', total_pages_transformasi=total_pages_transformasi, 
-                           current_page=page_num)
-
+                           total_pages=total_pages, current_page=page_num, showing_text=showing_text)
 
 @app.route('/smote')
 def smote():

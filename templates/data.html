@@ -9,7 +9,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
- <!-- <img src="/static/img/cerebrocarelogo.png" class="img-fluid"alt="brainlogo"> -->
+    <!-- Favicons -->
+    <link href="{{ url_for('static', filename='img/cerebrocarelogo.png') }}" rel="icon"/>
+
     <title>CEREBROCARE</title>
 
     <!-- Custom fonts for this template-->
@@ -20,6 +22,8 @@
 
     <!-- Custom styles for this template-->
     <link href="{{ url_for('static', filename='css/sb-admin-2.min.css')}}" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 </head>
 
@@ -32,7 +36,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
                 <div class="sidebar-brand-icon">
                     <img src="/static/img/cerebrocarelogo.png" class="img-fluid"alt="brainlogo">
                 </div>
@@ -59,8 +63,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/form" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link" href="/form">
                     <i class="fas fa-fw fa-pen-fancy"></i>
                     <span>Prediction Test</span>
                 </a>
@@ -83,7 +86,7 @@
         </li>
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="/smote" >
+            <a class="nav-link" href="/smote" >
                 <i class="fas fa-fw fa-newspaper"></i>
                 <span>SMOTE</span>
         </a>
@@ -171,10 +174,10 @@
                                     <!-- Nav tabs -->
                                     <ul class="nav nav-tabs sticky-tab" role="tablist">
                                         <li class="nav-item">
-                                            <a class="nav-link active" id="dataset-asli-tab" data-toggle="tab" href="#dataset-asli" role="tab" onclick="showTab('dataset-asli')">Dataset Asli</a>
+                                            <a class="nav-link active" id="dataset-asli-tab" data-bs-toggle="tab" href="#dataset-asli" role="tab">Dataset Asli</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" id="dataset-transformasi-tab" data-toggle="tab" href="#dataset-transformasi" role="tab" onclick="showTab('dataset-transformasi')">Dataset Transformasi</a>
+                                            <a class="nav-link" id="dataset-transformasi-tab" data-bs-toggle="tab" href="#dataset-transformasi" role="tab">Dataset Transformasi</a>
                                         </li>
                                     </ul>
                                 
@@ -219,52 +222,7 @@
                                                         {% endfor %}
                                                     </tbody>
                                                 </table>
-                                                <!-- Pagination -->
-                                            <nav class="pt-2" aria-label="Page navigation">
-                                                <ul class="pagination">
-                                                    <!-- Tambahkan link untuk halaman-halaman selanjutnya di sini -->
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="/data?page=1#dataset-asli">1</a>
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="/data?page=2#dataset-asli">2</a>
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="/data?page=3#dataset-asli">3</a>
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="/data?page=4#dataset-asli">4</a>
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="/data?page=5#dataset-asli">5</a>
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="/data?page=6#dataset-asli">6</a>
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="/data?page=7#dataset-asli">7</a>
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="/data?page=8#dataset-asli">8</a>
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="/data?page=9#dataset-asli">9</a>
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="/data?page=10#dataset-asli">10</a>
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="/data?page=11#dataset-asli">11</a>
-                                                    </li>
-                                                    <!-- Dan seterusnya -->
-                                                </ul>
-                                            </nav>
-
                                             </div>
-                                            <!-- Pagination -->
-                                            <nav class="pt-2" aria-label="Page navigation">
-                                                <!-- Pagination untuk dataset asli -->
-                                            </nav>
                                         </div>
                                 
                                         <!-- Tab "Dataset Transformasi" -->
@@ -305,71 +263,35 @@
                                                         </tr>
                                                         {% endfor %}
                                                     </tbody>
-                                                                                                    </table>
-
+                                                </table>
                                             </div>
-                                            <!-- Pagination untuk dataset transformasi -->
-                                            <nav class="pt-2" aria-label="Page navigation">
-                                                <ul class="pagination">
-                                                    <!-- Tambahkan link untuk halaman-halaman selanjutnya di sini -->
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="/data?page=1#data-transformasi">1</a>
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="/data?page=2#data-transformasi">2</a>
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="/data?page=3#data-transformasi">3</a>
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="/data?page=4#data-transformasi">4</a>
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="/data?page=5#data-transformasi">5</a>
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="/data?page=6#data-transformasi">6</a>
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="/data?page=7#data-transformasi">7</a>
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="/data?page=8#data_transformasi">8</a>
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="/data?page=9#data_transformasi">9</a>
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="/data?page=10#data_transformasi">10</a>
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="/data?page=11#data_transformasi">11</a>
-                                                    </li>
-                                                    <!-- Dan seterusnya -->
-                                                </ul>
-                                            </nav>
                                         </div>
                                     </div>
-                                </div>
-                                
-                                <script>
-                                    function showTab(tabId) {
-                                        // Menyembunyikan semua tab
-                                        var tabs = document.querySelectorAll('.tab-pane');
-                                        tabs.forEach(function(tab) {
-                                            tab.classList.remove('active');
-                                        });
-                                
-                                        // Menampilkan tab yang dipilih
-                                        document.getElementById(tabId).classList.add('active');
-                                    }
-                                </script>
-                                
+
+                                    <!-- Pagination -->
+                                    <div class="row align-items-center">
+                                        <p class="px-3">{{ showing_text }}</p>
+                                        <div aria-label="Page navigation">
+                                            <ul class="pagination">
+                                                {% for page in range(1, total_pages + 1) %}
+                                                    {% if page == 1 or page == current_page - 1 or page == current_page or page == current_page + 1 or page == total_pages %}
+                                                        <li class="page-item {% if page == current_page %}active{% endif %}">
+                                                            <a class="page-link" href="/data?page={{ page }}">{{ page }}</a>
+                                                        </li>
+                                                    {% elif page == current_page - 2 or page == current_page + 2 %}
+                                                        <li class="page-item disabled">
+                                                            <span class="page-link">...</span>
+                                                        </li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                </div>  
                             </div>
                         </div>
                     </main>
-                    
-                    
 
                 </div>
                 <!-- /.container-fluid -->
@@ -398,6 +320,8 @@
         <i class="fas fa-angle-up"></i>
     </a>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
