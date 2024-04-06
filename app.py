@@ -1,12 +1,16 @@
 from flask import Flask, render_template, request, jsonify
-import pickle
-import numpy as np
-from flask_cors import CORS
-import os
+
 import pandas as pd 
+import joblib
+# import numpy as np
+# from flask_cors import CORS
+import os
 from math import ceil
 
 app = Flask(__name__)
+
+model = joblib.load('./models/model.joblib')
+ga = joblib.load('./models/ga_feature.joblib')
 
 @app.route('/')
 def home():
@@ -20,9 +24,29 @@ def dashboard():
 def form():
     return render_template('testform.html')
 
-from flask import request  # Import request from Flask
+@app.route('/predict', methods=['POST'])
+def predict():
+    if request.method == 'POST':
+        try:
+            form_values = request.form.to_dict()
 
-from math import ceil
+            data = {}
+
+            data = {key: [float(value)] if value.replace('.', '', 1).isdigit() else value for key, value in form_values.items()}
+
+            # Membuat data kedalam bentuk dataframe
+            df = pd.DataFrame(data)
+
+            # Prediksi hasil
+            prediction = model.predict(df)
+            predicted_class = prediction[0]
+            print(predicted_class)
+
+            # Return prediction as JSON
+            return str(predicted_class)
+
+        except Exception as e:
+            return {"error": str(e)}
 
 @app.route('/data')
 def data():
@@ -38,7 +62,7 @@ def data():
     page_num = int(request.args.get('page', 1))
 
     # Menentukan jumlah data per halaman
-    data_per_page = 500
+    data_per_page = 10
 
     # Menghitung indeks awal dan akhir untuk data pada halaman yang diminta
     start_idx = (page_num - 1) * data_per_page
@@ -65,4 +89,5 @@ def smote():
 def report():
     return render_template('report.html')
 
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True)

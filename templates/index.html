@@ -9,7 +9,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
- <!-- <img src="/static/img/cerebrocarelogo.png" class="img-fluid"alt="brainlogo"> -->
+    <!-- Favicons -->
+    <link href="{{ url_for('static', filename='img/cerebrocarelogo.png') }}" rel="icon"/>
+
     <title>CEREBROCARE</title>
 
     <!-- Custom fonts for this template-->
@@ -32,7 +34,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/">
                 <div class="sidebar-brand-icon">
                     <img src="/static/img/cerebrocarelogo.png" class="img-fluid"alt="brainlogo">
                 </div>
@@ -59,8 +61,7 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/form" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
+                <a class="nav-link" href="/form">
                     <i class="fas fa-fw fa-pen-fancy"></i>
                     <span>Prediction Test</span>
                 </a>
@@ -82,7 +83,7 @@
         </li>
          <!-- Nav Item - Utilities Collapse Menu -->
          <li class="nav-item">
-            <a class="nav-link collapsed" href="/smote" >
+            <a class="nav-link" href="/smote" >
                 <i class="fas fa-fw fa-newspaper"></i>
                 <span>SMOTE</span>
         </a>
